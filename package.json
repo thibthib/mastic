@@ -18,5 +18,6 @@
   },
   "homepage": "https://github.com/thibthib/mastic#readme",
   "devDependencies": {
+    "lerna": "2.0.0-beta.26"
   }
 }
