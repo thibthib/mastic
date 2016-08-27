@@ -1,1 +1,6 @@
-export { default as Promise } from './tests/Promise.js';
+import Promise from './tests/Promise.js';
+
+export const hasPromise = Promise;
+export default {
+	Promise
+};
