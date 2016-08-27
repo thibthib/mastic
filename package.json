@@ -1,0 +1,22 @@
+{
+  "name": "mastic",
+  "version": "1.0.0",
+  "description": "Set of tools to step up your polyfill game",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thibthib/mastic.git"
+  },
+  "keywords": [
+    "mastic",
+    "polyfill"
+  ],
+  "author": "Thibaut Dutartre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thibthib/mastic/issues"
+  },
+  "homepage": "https://github.com/thibthib/mastic#readme",
+  "devDependencies": {
+  }
+}
