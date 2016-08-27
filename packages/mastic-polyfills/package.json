@@ -15,6 +15,6 @@
   "author": "Thibaut Dutartre",
   "license": "MIT",
   "dependencies": {
-    "mastic-detect": "1.0.0"
+    "promise": "^7.1.1"
   }
 }

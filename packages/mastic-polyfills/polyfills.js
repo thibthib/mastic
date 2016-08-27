@@ -1,1 +1,1 @@
-export { default as Promise } from './polyfills/Promise.js';
+export { default as Promise } from 'promise/lib/es6-extensions.js';
