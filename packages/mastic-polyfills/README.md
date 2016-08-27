@@ -1,4 +1,4 @@
-# mastic-detect
+# mastic-polyfills
 
 Collection of polyfills
 
