@@ -1,3 +1,1 @@
-export default () => {
-	return typeof Promise === 'undefined';
-};
+export default typeof Promise === 'undefined';
