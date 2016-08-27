@@ -2,7 +2,6 @@
   "name": "mastic-polyfills",
   "version": "1.0.0",
   "description": "Collection of polyfills",
-  "main": "polyfills.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/thibthib/mastic/tree/master/packages/mastic-polyfills"
