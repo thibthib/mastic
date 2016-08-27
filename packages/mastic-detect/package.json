@@ -1,0 +1,16 @@
+{
+    "name": "mastic-detect",
+    "version": "1.0.0",
+    "description": "Collection of feature detection tests",
+    "main": "detect.js",
+    "keywords": [
+        "mastic",
+        "polyfill",
+        "feature",
+        "detection",
+        "detect"
+    ],
+    "author": "Thibaut Dutartre",
+    "license": "MIT",
+    "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-detect"
+}
