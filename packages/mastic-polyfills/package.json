@@ -2,10 +2,7 @@
   "name": "mastic-polyfills",
   "version": "1.0.0",
   "description": "Collection of polyfills",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thibthib/mastic/tree/master/packages/mastic-polyfills"
-  },
+  "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-polyfills",
   "keywords": [
     "mastic",
     "polyfill",
@@ -15,5 +12,17 @@
   "license": "MIT",
   "dependencies": {
     "promise": "^7.1.1"
+  },
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "glob": "^7.0.6",
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "rollup": "^0.34.10",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^3.3.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1"
   }
 }
