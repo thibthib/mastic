@@ -13,7 +13,8 @@ glob('source/*.js', (er, files) => {
 			plugins: [
 				nodeResolve({
 					jsnext: true,
-					main: true
+					main: true,
+					browser: true
 				}),
 				commonjs({
 					include: 'node_modules/**'
