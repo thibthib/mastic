@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Collection of polyfills",
   "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-polyfills",
+  "main": "polyfills.js",
   "keywords": [
     "mastic",
     "polyfill",
@@ -11,7 +12,8 @@
   "author": "Thibaut Dutartre",
   "license": "MIT",
   "dependencies": {
-    "promise": "^7.1.1"
+    "promise": "^7.1.1",
+    "mastic-detect": "1.0.0"
   },
   "scripts": {
     "build": "node scripts/build.js"
