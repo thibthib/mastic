@@ -1,7 +1,10 @@
 const getUserPolyfills = (polyfills) => {
 	return polyfills.reduce((userPolyfills, polyfill) => {
 		if (polyfill.isNeeded) {
-			userPolyfills.push(polyfill.bundle);
+			const bundle = typeof polyfill.bundle === 'function' ? polyfill.bundle() : polyfill.bundle;
+			if (typeof bundle !== 'undefined') {
+				userPolyfills.push(bundle);
+			}
 		}
 		return userPolyfills;
 	}, []);
