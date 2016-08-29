@@ -18,3 +18,4 @@ import 'mastic-polyfills/Promise.js';
 
 ## List of polyfills
 *Promise* : 'promise/lib/es6-extensions.js' from https://github.com/then/promise
+*Animations* : 'web-animations-js/web-animations-next.min.js' from https://github.com/web-animations/web-animations-js
