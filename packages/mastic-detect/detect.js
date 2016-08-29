@@ -1,4 +1,4 @@
-import animationTest from './test/animations.js';
+import animationTest from './tests/animations.js';
 
 export const hasPromise = typeof window.Promise !== 'undefined';
 export const hasFetch = typeof window.fetch !== 'undefined';
