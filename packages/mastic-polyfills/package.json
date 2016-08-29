@@ -14,6 +14,7 @@
   "author": "Thibaut Dutartre",
   "license": "MIT",
   "dependencies": {
+    "dom-shims": "0.1.4",
     "mastic-detect": "1.0.0",
     "promise": "^7.1.1",
     "whatwg-fetch": "1.0.0"

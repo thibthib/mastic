@@ -1,11 +1,16 @@
-import { hasPromise, hasFetch } from 'mastic-detect';
+import detect from 'mastic-detect';
 
 export const Promise = {
-	isNeeded: !hasPromise,
+	isNeeded: !detect.Promise,
 	bundle: 'Promise'
 };
 
 export const fetch = {
-	isNeeded: !hasFetch,
+	isNeeded: !detect.fetch,
 	bundle: 'fetch'
+};
+
+export const classList = {
+	isNeeded: !detect.classList,
+	bundle: 'classList'
 };
