@@ -1,15 +1,14 @@
 const getUserPolyfills = (polyfills) => {
-	return polyfills.reduce((userPolyfills, getPolyfill) => {
-		const polyfill = getPolyfill();
-		if (typeof polyfill !== 'undefined') {
-			userPolyfills.push(polyfill);
+	return polyfills.reduce((userPolyfills, polyfill) => {
+		if (polyfill.isNeeded) {
+			userPolyfills.push(polyfill.bundle);
 		}
 		return userPolyfills;
 	}, []);
 };
 
-const getPolyfillsURL = (polyfills, { url }) => {
-	return `${url}/polyfills.js?with=${polyfills.map(polyfill => polyfill.name).join(',')}`;
+const getPolyfillsURL = (polyfillBundles, { url }) => {
+	return `${url}/polyfills.js?with=${polyfillBundles.join(',')}`;
 };
 
 const loadPolyfills = (url) => {
@@ -22,7 +21,10 @@ const loadPolyfills = (url) => {
 export default ({ polyfills, url }) => {
 	const userPolyfills = getUserPolyfills(polyfills);
 	if (userPolyfills.length > 0) {
+		console.log('fetching polyfills : ', userPolyfills.join(', ')); //eslint-disable-line
 		const polyfillURL = getPolyfillsURL(userPolyfills, { url });
 		loadPolyfills(polyfillURL);
+	} else {
+		console.log('you dont need no polyfill'); //eslint-disable-line
 	}
 };
