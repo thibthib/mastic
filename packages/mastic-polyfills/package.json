@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Collection of polyfills",
   "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-polyfills",
-  "main": "polyfills.js",
+  "main": "es5-polyfills.js",
+  "jsnext:main": "polyfills.js",
+  "module": "polyfills.js",
   "keywords": [
     "mastic",
     "polyfill",
