@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "dom-shims": "0.1.4",
+    "intl": "1.2.4",
     "mastic-detect": "1.0.0",
     "promise": "^7.1.1",
     "web-animations-js": "2.2.2",
@@ -24,9 +25,10 @@
     "build": "node scripts/build.js"
   },
   "devDependencies": {
-    "glob": "^7.0.6",
     "babel-preset-es2015-rollup": "^1.2.0",
+    "glob": "^7.0.6",
     "rollup": "^0.34.10",
+    "rollup-plugin-alias": "1.2.0",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^3.3.1",
     "rollup-plugin-node-resolve": "^2.0.0",

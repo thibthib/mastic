@@ -20,3 +20,14 @@ export const animations = {
 	bundle: 'animations'
 };
 
+export const Intl = {
+	isNeeded: !detect.Intl,
+	bundle: 'Intl'
+};
+
+export const IntlLocale = {
+	isNeeded: !detect.Intl,
+	bundle: () => {
+		return `IntlLocale-${window.navigator.language}.js`;
+	}
+};
