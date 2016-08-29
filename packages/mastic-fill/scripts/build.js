@@ -14,7 +14,7 @@ rollup({
 }).then(bundle => {
 	bundle.write({
 		format: 'cjs',
-		dest: 'bundles/fill.js'
+		dest: 'es5-fill.js'
 	});
 }).catch(error => {
 	console.error(error); //eslint-disable-line
