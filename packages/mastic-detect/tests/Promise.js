@@ -1,1 +1,1 @@
-export default typeof Promise !== 'undefined';
+export default typeof window.Promise !== 'undefined';
