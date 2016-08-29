@@ -14,3 +14,9 @@ export const classList = {
 	isNeeded: !detect.classList,
 	bundle: 'classList'
 };
+
+export const animations = {
+	isNeeded: !detect.animations,
+	bundle: 'animations'
+};
+
