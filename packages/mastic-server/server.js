@@ -18,6 +18,7 @@ express.get('/polyfills.js', (request, response) => {
 	const polyfills = [];
 	if (request.query.with) {
 		request.query.with.split(',').forEach(polyfillName => {
+			console.log('getting polyfill :', polyfillName); //eslint-disable-line
 			polyfills.push(getPolyfill(polyfillName));
 		});
 	}
@@ -26,6 +27,8 @@ express.get('/polyfills.js', (request, response) => {
 		response.set('Content-Type', 'application/javascript;charset=utf-8');
 		response.set('Access-Control-Allow-Origin', '*');
 		response.send(polyfillsContents.join(''));
+	}).catch(error => {
+		response.send(error);
 	});
 });
 
