@@ -17,5 +17,8 @@ import 'mastic-polyfills/Promise.js';
 ```
 
 ## List of polyfills
-*Promise* : 'promise/lib/es6-extensions.js' from https://github.com/then/promise
-*Animations* : 'web-animations-js/web-animations-next.min.js' from https://github.com/web-animations/web-animations-js
+
+* **Animations** : `web-animations-js/web-animations-next.min.js` from https://github.com/web-animations/web-animations-js
+* **classList** : `dom-shims/shim/Element.classList` from https://github.com/necolas/dom-shims
+* **fetch** : `whatwg-fetch` from https://github.com/github/fetch
+* **Promise** : `promise/lib/es6-extensions.js` from https://github.com/then/promise
