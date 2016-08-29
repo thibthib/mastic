@@ -3,6 +3,8 @@
     "version": "1.0.0",
     "description": "Collection of feature detection tests",
     "main": "detect.js",
+    "jsnext:main": "detect.js",
+    "module": "detect.js",
     "keywords": [
         "mastic",
         "polyfill",

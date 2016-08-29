@@ -1,10 +1,7 @@
-import Promise from './tests/Promise.js';
-import fetch from './tests/fetch.js';
-
-export const hasPromise = Promise;
-export const hasFetch = fetch;
+export const hasPromise = typeof window.Promise !== 'undefined';
+export const hasFetch = typeof window.fetch !== 'undefined';
 
 export default {
-	Promise,
-	fetch
+	Promise: hasPromise,
+	fetch: hasFetch
 };
