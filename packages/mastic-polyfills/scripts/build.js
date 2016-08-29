@@ -17,7 +17,7 @@ const rollupConfig = {
 			include: 'node_modules/**'
 		}),
 		babel({
-			exclude: 'node_modules/**',
+			include: ['./*.js', 'source/**', 'node_modules/mastic-detect/**'],
 			presets: ['es2015-rollup']
 		}),
 		uglify()
