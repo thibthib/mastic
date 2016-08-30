@@ -6,6 +6,7 @@ export const hasClassList = 'classList' in document.createElement('div');
 export const hasAnimations = animationTest;
 export const hasIntl = typeof window.Intl !== 'undefined';
 export const hasObjectFit = 'object-fit' in new Image().style;
+export const hasObjectAssign = typeof Object.assign !== 'undefined';
 
 export default {
 	Promise: hasPromise,
@@ -13,5 +14,6 @@ export default {
 	classList: hasClassList,
 	animations: hasAnimations,
 	Intl: hasIntl,
-	objectFit: hasObjectFit
+	objectFit: hasObjectFit,
+	objectAssign: hasObjectAssign
 };

@@ -43,3 +43,8 @@ export const objectFit = {
 	isNeeded: !detect.objectFit,
 	bundle: 'object-fit'
 };
+
+export const objectAssign = {
+	isNeeded: !detect.objectAssign,
+	bundle: 'object-assign'
+};
