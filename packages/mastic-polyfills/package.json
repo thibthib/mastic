@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "dom-shims": "0.1.4",
+    "fetch-jsonp": "1.0.1",
     "intl": "1.2.4",
     "mastic-detect": "1.0.0",
     "promise": "^7.1.1",

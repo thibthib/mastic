@@ -1,4 +1,5 @@
 import detect from 'mastic-detect';
+import { isIE } from './browser-tools.js';
 
 export const Promise = {
 	isNeeded: !detect.Promise,
@@ -7,7 +8,13 @@ export const Promise = {
 
 export const fetch = {
 	isNeeded: !detect.fetch,
-	bundle: 'fetch'
+	bundle: () => {
+		if (isIE(9)) {
+			return 'fetch-jsonp';
+		} else {
+			return 'fetch';
+		}
+	}
 };
 
 export const classList = {
