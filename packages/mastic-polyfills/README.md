@@ -22,4 +22,5 @@ import 'mastic-polyfills/Promise.js';
 * **classList** : `dom-shims/shim/Element.classList` from https://github.com/necolas/dom-shims
 * **fetch** : `whatwg-fetch` from https://github.com/github/fetch
 * **Intl** : `intl` from https://github.com/andyearnshaw/Intl.js/
+* **object-fit** : `object-fit-images` from https://github.com/bfred-it/object-fit-images
 * **Promise** : `promise/lib/es6-extensions.js` from https://github.com/then/promise

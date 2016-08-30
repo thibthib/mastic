@@ -38,3 +38,8 @@ export const IntlLocale = {
 		return `IntlLocale-${window.navigator.language}.js`;
 	}
 };
+
+export const objectFit = {
+	isNeeded: !detect.objectFit,
+	bundle: 'object-fit'
+};
