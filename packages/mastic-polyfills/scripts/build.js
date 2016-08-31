@@ -63,6 +63,7 @@ glob('source/*.js', (er, files) => {
 					const filename = path.basename(file);
 					console.log(`${filename} bundle generated`); //eslint-disable-line
 					bundle.write({
+						useStrict: false,
 						format: 'cjs',
 						dest: `bundles/${basename}-${filename}`
 					});
@@ -77,6 +78,7 @@ glob('source/*.js', (er, files) => {
 				const filename = path.basename(file);
 				console.log(`${filename} bundle generated`); //eslint-disable-line
 				bundle.write({
+					useStrict: false,
 					format: 'cjs',
 					dest: `bundles/${filename}`
 				});
