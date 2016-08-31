@@ -1,6 +1,11 @@
 import detect from 'mastic-detect';
 import { isIE } from './browser-tools.js';
 
+export default (isNeeded, bundle) => ({
+	isNeeded,
+	bundle
+});
+
 export const Promise = {
 	isNeeded: !detect.Promise,
 	bundle: 'Promise'
