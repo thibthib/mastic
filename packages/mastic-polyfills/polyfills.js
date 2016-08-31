@@ -35,7 +35,10 @@ export const Intl = {
 export const IntlLocale = {
 	isNeeded: !detect.Intl,
 	bundle: () => {
-		return `IntlLocale-${window.navigator.language}.js`;
+		if (window.navigator.language) {
+			return `IntlLocale-${window.navigator.language}.js`;
+		}
+		return '';
 	}
 };
 
