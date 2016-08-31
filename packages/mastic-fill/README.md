@@ -16,8 +16,31 @@ and then import it, and specify the features you want to test. If the browser do
 import fill from 'mastic-fill';
 import { Promise } from 'mastic-polyfills';
 
-mastic({
+fill({
 	polyfills: [Promise],
 	url: 'http://url.of.your.mastic.server'
 });
 ```
+
+you can also make it work with your polyfills : you'll have to provide a polyfill object with 
+
+```js
+import fill from 'mastic-fill';
+import Polyfill, { Promise } from 'mastic-polyfills';
+
+const myFeatureDetection = typeof feature !== 'undefined';
+const myBundleName = 'my-polyfill';
+const myPolyfill = new Polyfill(customFeatureDetection, customBundleName);
+
+fill({
+	polyfills: [Promise, customPolyfill],
+	url: 'http://url.of.your.mastic.server'
+});
+```
+
+## fill() options
+### polyfills — `Array` of `Polyfill` objects
+The list of polyfills the script will be testing and asking for if needed.
+
+### url — `String`
+The url of the server serving your polyfills bundles.
