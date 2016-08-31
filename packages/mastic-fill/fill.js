@@ -15,6 +15,8 @@ const getPolyfillsURL = (polyfillBundles, { url }) => {
 };
 
 const getScriptLoader = () => {
+	const scriptTag = document.scripts[0];
+	
 	const loadAsyncScript = (url) => {
 		const tag = document.createElement('script');
 		tag.src = url;
@@ -27,7 +29,7 @@ const getScriptLoader = () => {
 		while (pendingScripts[0] && pendingScripts[0].readyState === 'loaded') {
 			const scriptToExecute = pendingScripts.shift();
 			scriptToExecute.onreadystatechange = null;
-			document.head.appendChild(scriptToExecute);
+			scriptTag.parentNode.insertBefore(scriptToExecute, scriptTag);
 		}
 	};
 	const loadReadyStateScript = (url) => {
@@ -37,7 +39,7 @@ const getScriptLoader = () => {
 		tag.src = url;
 	};
 	
-	if ('async' in document.createElement('script')) {
+	if ('async' in scriptTag) {
 		return {
 			load: loadAsyncScript
 		};
