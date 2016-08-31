@@ -38,9 +38,13 @@ fill({
 });
 ```
 
-## fill() options
-### polyfills — `Array` of `Polyfill` objects
-The list of polyfills the script will be testing and asking for if needed.
+## `fill()` options
+### polyfills
+`Array` of `Polyfill` objects
 
-### url — `String`
-The url of the server serving your polyfills bundles.
+The list of polyfills the script will be testing and asking for if needed. For more information on polyfills objects, see [the mastic-polyfills readme](https://github.com/thibthib/mastic/blob/master/packages/mastic-polyfills/README.md).
+
+### url
+`String`
+
+The url of the server serving your polyfills bundles. See [the mastic-server readme](https://github.com/thibthib/mastic/blob/master/packages/mastic-server/README.md) for more information.
