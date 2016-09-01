@@ -1,9 +1,9 @@
 {
-  "name": "mastic-server",
+  "name": "mastic-node-server",
   "version": "1.0.0",
   "description": "Bakes custom polyfills for each user's browser",
   "main": "server.js",
-  "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-server",
+  "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-node-server",
   "keywords": [
     "mastic",
     "server",

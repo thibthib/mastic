@@ -1,6 +1,6 @@
 # mastic-polyfills
 
-Collection of polyfills intended to be used by [mastic-server](https://github.com/thibthib/mastic/tree/master/packages/mastic-server) and [mastic-fill](https://github.com/thibthib/mastic/tree/master/packages/mastic-fill)
+Collection of polyfills intended to be used by [mastic-node-server](https://github.com/thibthib/mastic/tree/master/packages/mastic-node-server) and [mastic-fetcher](https://github.com/thibthib/mastic/tree/master/packages/mastic-fetcher)
 
 ## How to use it
 
@@ -10,7 +10,7 @@ First, install mastic-polyfills as one of your dependencies :
 npm i mastic-polyfills --save
 ```
 
-and then you can import the polyfills you want to pass to mastic-server or mastic-fill
+and then you can import the polyfills you want to pass to mastic-node-server or mastic-fetcher
 
 ```js
 import { Promise } from 'mastic-polyfills';

@@ -1,22 +1,22 @@
-# 🔮 mastic-fill 🌟
+# 🔮 mastic-fetcher 🌟
 
 Automatically tests your browser for the features you want, and then fetches the polyfills
 
 ## How to use it
 
-First, install mastic-fill as one of your dependencies :
+First, install mastic-fetcher as one of your dependencies :
 
 ```
-npm i mastic-fill --save
+npm i mastic-fetcher --save
 ```
 
-You'll need to provide three things to mastic-fill :
+You'll need to provide three things to mastic-fetcher :
 * a list of polyfills to test
 * an url to fetch the polyfills if needed
 * a list of scripts to load and execute when the browser is polyfilled and ready to rock
 
 ```js
-import fill from 'mastic-fill';
+import fill from 'mastic-fetcher';
 import { Promise } from 'mastic-polyfills';
 
 fill({
@@ -33,7 +33,7 @@ fill({
 The list of polyfills the fill script will test and fetch if needed. You can import and use the ones from `mastic-polyfills`, but you can also make it work with your hand-made polyfills :
 
 ```js
-import fill from 'mastic-fill';
+import fill from 'mastic-fetcher';
 import Polyfill, { Promise } from 'mastic-polyfills';
 
 const isFeatureSupported = typeof feature !== 'undefined';
@@ -52,12 +52,12 @@ For more information on polyfills objects, see [the mastic-polyfills readme](htt
 ### url
 `String`
 
-The url of the server serving your polyfills bundles. See [the mastic-server readme](https://github.com/thibthib/mastic/blob/master/packages/mastic-server/README.md) for more information.
+The url of the server serving your polyfills bundles. See [the mastic-node-server readme](https://github.com/thibthib/mastic/blob/master/packages/mastic-node-server/README.md) for more information.
 
 ### scripts
 `Array` of `String`
 
-To be able to polyfill your browser before your app code runs, `mastic-fill` must control the script loading and executing order. It means you have to remove the scripts tags from your pages, and provide the urls to `mastic-fill`. It can be done with a global variable or anything you want.
+To be able to polyfill your browser before your app code runs, `mastic-fetcher` must control the script loading and executing order. It means you have to remove the scripts tags from your pages, and provide the urls to `mastic-fetcher`. It can be done with a global variable or anything you want.
 
 ```diff
 - <script src="/assets/app.js"></script>
@@ -76,4 +76,4 @@ You can improve the loading speed of your scripts in [the browsers supporting re
 <link rel="preload" href="/assets/app.js" as="script">
 ```
 
-This will preload the scripts you specify without executing them, so when `mastic-fill` will want to execute them they will already be in loaded in cache.
+This will preload the scripts you specify without executing them, so when `mastic-fetcher` will want to execute them they will already be in loaded in cache.

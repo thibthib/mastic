@@ -1,11 +1,11 @@
 {
-  "name": "mastic-fill",
+  "name": "mastic-fetcher",
   "version": "1.0.0",
   "description": "Automagically test your brwoser and asks for the polyfills you need",
   "main": "es5-fill.js",
   "jsnext:main": "fill.js",
   "module": "fill.js",
-  "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-fill",
+  "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-fetcher",
   "keywords": [
     "mastic",
     "fill",
