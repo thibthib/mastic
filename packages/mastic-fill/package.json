@@ -13,7 +13,7 @@
     "feature",
     "detection"
   ],
-  "author": "Thibaut Dutartre",
+  "author": "Thibaut Dutartre <t.dutartre@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.2.0",

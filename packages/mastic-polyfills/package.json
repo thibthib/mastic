@@ -11,7 +11,7 @@
     "polyfill",
     "collection"
   ],
-  "author": "Thibaut Dutartre",
+  "author": "Thibaut Dutartre <t.dutartre@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "dom-shims": "0.1.4",

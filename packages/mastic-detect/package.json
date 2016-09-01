@@ -12,7 +12,7 @@
         "detection",
         "detect"
     ],
-    "author": "Thibaut Dutartre",
+    "author": "Thibaut Dutartre <t.dutartre@gmail.com>",
     "license": "MIT",
     "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-detect",
     "devDependencies": {
