@@ -70,3 +70,10 @@ fill({
 	scripts: window.scripts
 });
 ```
+
+You can improve the loading speed of your scripts in [the browsers supporting resources preload (mainly Chrome for the moment)](http://caniuse.com/#search=preload) by adding some lines in the header of your page :
+```html
+<link rel="preload" href="/assets/app.js" as="script">
+```
+
+This will preload the scripts you specify without executing them, so when `mastic-fill` will want to execute them they will already be in loaded in cache.
