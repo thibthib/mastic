@@ -50,7 +50,7 @@ const getScriptLoader = () => {
 	}
 };
 
-export default ({ polyfills, url }) => {
+export default ({ polyfills, url, scripts }) => {
 	const scriptLoader = getScriptLoader();
 	const userPolyfills = getUserPolyfills(polyfills);
 	if (userPolyfills.length > 0) {
@@ -60,7 +60,7 @@ export default ({ polyfills, url }) => {
 	} else {
 		console.log('you dont need no polyfill'); //eslint-disable-line
 	}
-	window.polyfilledScripts.forEach(scriptURL => {
+	scripts.forEach(scriptURL => {
 		scriptLoader.load(scriptURL);
 	});
 };
