@@ -1,6 +1,6 @@
 {
   "name": "mastic-filler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automagically test your browser and fetches only the polyfills you need",
   "main": "es5-filler.js",
   "jsnext:main": "filler.js",
