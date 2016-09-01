@@ -10,10 +10,10 @@ First, install mastic-filler as one of your dependencies :
 npm i mastic-filler --save
 ```
 
-You'll need to provide three things to mastic-filler :
-* a list of polyfills to test
-* an url to fetch the polyfills if needed
-* a list of scripts to load and execute when the browser is polyfilled and ready to rock
+You need to provide three things to mastic-filler :
+* [a list of polyfills to test](#polyfills)
+* [an url to fetch the polyfills](#url)
+* [a list of scripts to load and execute when the browser is polyfilled and ready to rock 🚀](#scripts) *(note that you have to remove the concerned scripts tags from your page)*
 
 ```js
 import filler from 'mastic-filler';
@@ -25,6 +25,8 @@ filler({
 	scripts: ['/assets/app.js']
 });
 ```
+
+Now, inline this code in your HTML page by the method of your choice, and enjoy !
 
 ## `filler()` options
 ### polyfills
