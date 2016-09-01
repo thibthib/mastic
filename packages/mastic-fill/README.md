@@ -10,7 +10,10 @@ First, install mastic-fill as one of your dependencies :
 npm i mastic-fill --save
 ```
 
-and then import it, and specify the features you want to test. If the browser doen't have them, mastic-fill will fetch the polyfills for you.
+You'll need to provide three things to mastic-fill :
+* a list of polyfills to test
+* an url to fetch the polyfills if needed
+* a list of scripts to load and execute when the browser is polyfilled and ready to rock
 
 ```js
 import fill from 'mastic-fill';
@@ -18,23 +21,8 @@ import { Promise } from 'mastic-polyfills';
 
 fill({
 	polyfills: [Promise],
-	url: 'http://url.of.your.mastic.server'
-});
-```
-
-you can also make it work with your polyfills : you'll have to provide a polyfill object with 
-
-```js
-import fill from 'mastic-fill';
-import Polyfill, { Promise } from 'mastic-polyfills';
-
-const myFeatureDetection = typeof feature !== 'undefined';
-const myBundleName = 'my-polyfill';
-const myPolyfill = new Polyfill(customFeatureDetection, customBundleName);
-
-fill({
-	polyfills: [Promise, customPolyfill],
-	url: 'http://url.of.your.mastic.server'
+	url: 'http://url.of.your.mastic.server',
+	scripts: ['/assets/app.js']
 });
 ```
 
@@ -42,9 +30,43 @@ fill({
 ### polyfills
 `Array` of `Polyfill` objects
 
-The list of polyfills the script will be testing and asking for if needed. For more information on polyfills objects, see [the mastic-polyfills readme](https://github.com/thibthib/mastic/blob/master/packages/mastic-polyfills/README.md).
+The list of polyfills the fill script will test and fetch if needed. You can import and use the ones from `mastic-polyfills`, but you can also make it work with your hand-made polyfills :
+
+```js
+import fill from 'mastic-fill';
+import Polyfill, { Promise } from 'mastic-polyfills';
+
+const isFeatureSupported = typeof feature !== 'undefined';
+const myBundleName = 'feature-polyfill';
+const myPolyfill = new Polyfill(isFeatureSupported, customBundleName);
+
+fill({
+	polyfills: [Promise, customPolyfill],
+	url: 'http://url.of.your.mastic.server',
+	scripts: ['/assets/app.js']
+});
+```
+
+For more information on polyfills objects, see [the mastic-polyfills readme](https://github.com/thibthib/mastic/blob/master/packages/mastic-polyfills/README.md).
 
 ### url
 `String`
 
 The url of the server serving your polyfills bundles. See [the mastic-server readme](https://github.com/thibthib/mastic/blob/master/packages/mastic-server/README.md) for more information.
+
+### scripts
+`Array` of `String`
+
+To be able to polyfill your browser before your app code runs, `mastic-fill` must control the script loading and executing order. It means you have to remove the scripts tags from your pages, and provide the urls to `mastic-fill`. It can be done with a global variable or anything you want.
+
+```diff
+- <script src="/assets/app.js"></script>
++ <script>window.scripts=['/assets/app.js']></script>
+```
+```js
+fill({
+	polyfills: [Promise],
+	url: 'http://url.of.your.mastic.server',
+	scripts: window.scripts
+});
+```
