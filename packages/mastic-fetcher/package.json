@@ -1,14 +1,14 @@
 {
   "name": "mastic-fetcher",
   "version": "1.0.0",
-  "description": "Automagically test your brwoser and asks for the polyfills you need",
+  "description": "Automagically test your browser and fetches only the polyfills you need",
   "main": "es5-fill.js",
   "jsnext:main": "fill.js",
   "module": "fill.js",
   "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-fetcher",
   "keywords": [
     "mastic",
-    "fill",
+    "fetcher",
     "polyfill",
     "feature",
     "detection"
@@ -22,6 +22,7 @@
     "rollup-plugin-uglify": "^1.0.1"
   },
   "scripts": {
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "prepublish": "npm run build"
   }
 }
