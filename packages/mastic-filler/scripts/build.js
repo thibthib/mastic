@@ -3,7 +3,7 @@ const babel = require('rollup-plugin-babel');
 const uglify = require('rollup-plugin-uglify');
 
 rollup({
-	entry: './fill.js',
+	entry: './filler.js',
 	plugins: [
 		babel({
 			exclude: 'node_modules/**',
@@ -14,7 +14,7 @@ rollup({
 }).then(bundle => {
 	bundle.write({
 		format: 'cjs',
-		dest: 'es5-fill.js'
+		dest: 'es5-filler.js'
 	});
 }).catch(error => {
 	console.error(error); //eslint-disable-line

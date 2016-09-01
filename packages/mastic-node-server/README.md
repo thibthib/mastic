@@ -2,7 +2,7 @@
 
 Bakes custom polyfills for each user's browser. Heavily inspired by [polyfill service](https://github.com/Financial-Times/polyfill-service)
 
-Tastes beter with mastic-fetcher for computing the custom request.
+Tastes beter with mastic-filler for computing the custom request.
 
 ## How to use it
 
