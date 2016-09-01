@@ -22,6 +22,7 @@
       "rollup-plugin-uglify": "^1.0.1"
     },
     "scripts": {
-      "build": "node scripts/build.js"
+      "build": "node scripts/build.js",
+      "prepublish": "npm run build"
     }
 }
