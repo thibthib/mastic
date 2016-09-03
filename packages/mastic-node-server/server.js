@@ -1,16 +1,24 @@
 const express = require('express')();
 const fs = require('fs');
 
+const polyfills = new Map();
+
 const getPolyfill = (polyfillName) => {
 	return new Promise((resolve, reject) => {
-		const polyfillPath = require.resolve(`mastic-polyfills/bundles/${polyfillName}.js`);
-		fs.readFile(polyfillPath, 'utf8', (error, contents) => {
-			if (error) {
-				reject(error);
-			} else {
-				resolve(contents);
-			}
-		});
+		const cached = polyfills.get(polyfillName);
+		if (typeof cached === 'undefined') {
+			const polyfillPath = require.resolve(`mastic-polyfills/bundles/${polyfillName}.js`);
+			fs.readFile(polyfillPath, 'utf8', (error, contents) => {
+				if (error) {
+					reject(error);
+				} else {
+					polyfills.set(polyfillName, contents);
+					resolve(contents);
+				}
+			});
+		} else {
+			resolve(cached);
+		}
 	});
 };
 
