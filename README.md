@@ -54,10 +54,35 @@ It means that if I want to self-host their service with a good cache, I will hav
 
 ## Okay, so what now ?
 
-Let's build our own ! This project aims to provide tools to have the best loading of polyfills you can get :
+I believe we can have a better polyfill management ! This project aims to provide tools to have the best loading of polyfills you can get :
 * only the polyfills needed by the users
 * in only one HTTP request
 * detected direclty in the users' browsers
 * configurable to allow everyone to use it
 
-❤️👏
+Let's make it a reality ! ➡️🛠👷
+
+## How does mastic boost polyfills loading performance 🚀
+
+Here's the dreamed mastic scenario :
+
+1. The developer curates a collection of polyfills, which links features with their detection test and their polyfill. He/she can use a collection already defined for faster setup.
+
+2. With this list, the developer starts a server able to serve custom bundles of polyfills to each user.
+
+3. When the app's JS code is transpiled/bundled, a tool reads the code and generate a list of the features used by the app that may require a polyfill in older browsers.
+
+4. This list is then passed as parameter to another tool which generate the code which will detect the user's browser features and download the polyfills' bundle needed by the app.
+
+5. The developer inlines this code in his/her web page.
+
+6. When the user loads the page, the script will detect and download the polyfills needed before executing the app's code.
+
+7. The second time the user visits a page of the website, instead of inlining the feature detection code again to get the polyfill bundle URL, we store this URL and direclty put a script tag with it.
+
+8. Profit 👌
+
+mastic is composed of three main parts :
+* ⚒ [a curated list of polyfills](https://github.com/thibthib/mastic/tree/master/packages/mastic-polyfills) with their [features detection tests](https://github.com/thibthib/mastic/tree/master/packages/mastic-detect)
+* 🍞 a [node server able to return a custom bundles of polyfills](https://github.com/thibthib/mastic/tree/master/packages/mastic-node-server) in one request
+* 👀 the inlined code that [detect the polyfills the browser needs and load them](https://github.com/thibthib/mastic/tree/master/packages/mastic-filler) before the app's code executes
