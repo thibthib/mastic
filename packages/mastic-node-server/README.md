@@ -16,9 +16,15 @@ and then run it !
 
 ```js
 import mastic from 'mastic-node-server';
+import Polyfill, { Promise } from 'mastic-polyfills';
+
+const isFeatureSupported = typeof feature !== 'undefined';
+const bundleIdentifier = 'feature-polyfill';
+const bundlePath = './path/to/my-bundle.js';
+const myPolyfill = new Polyfill(isFeatureSupported, bundleIdentifier, bundlePath);
 
 const server = mastic({
-	//options
+	polyfills: [Promise, myPolyfill]
 });
 
 server.listen();
