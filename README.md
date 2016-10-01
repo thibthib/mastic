@@ -41,7 +41,7 @@ But.
 This solution has several flaws to me :
 
 ### ❌ Custom polyfills
-It doesn't seem possible to add your custom polyfills, but only to use the provided list of polyfills. It really is a no-go, as I might rather use another `Promise` polyfill instead of theirs, or simply add a polyfill not yet in their list (like the Web Animation API).
+There is no API to add your custom polyfills, the only way is to fork their project. This should really be easier, as users could want to use another `Promise` polyfill instead of theirs, or simply add a polyfill not yet in their list (like the Web Animation API).
 
 ### ⚠️ User-agent detection
 The user-agent detection will never be as good as a feature detection right in the browser.
