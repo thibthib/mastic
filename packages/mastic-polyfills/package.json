@@ -1,6 +1,6 @@
 {
   "name": "mastic-polyfills",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Collection of polyfills",
   "repository": "https://github.com/thibthib/mastic/tree/master/packages/mastic-polyfills",
   "main": "es5-polyfills.js",
