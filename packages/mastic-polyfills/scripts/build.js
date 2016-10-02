@@ -1,45 +1,17 @@
+const denodeify = require('denodeify');
 const { rollup } = require('rollup');
-const alias = require('rollup-plugin-alias');
-const babel = require('rollup-plugin-babel');
-const commonjs = require('rollup-plugin-commonjs');
-const glob = require('glob');
-const nodeResolve = require('rollup-plugin-node-resolve');
+const glob = denodeify(require('glob'));
 const path = require('path');
-const uglify = require('rollup-plugin-uglify');
+const fs = require('fs');
+const readFile = denodeify(fs.readFile);
+const writeFile = denodeify(fs.writeFile);
+const camelcase = require('camelcase');
+const chalk = require('chalk');
+const getRollupConfigForEntry = require('./rollup-config.js');
+const flatten = require('array-flatten');
 
-const multiConfig = {
-	IntlLocale: {
-		files: [
-			'node_modules/intl/locale-data/jsonp/es.js',
-			'node_modules/intl/locale-data/jsonp/fr.js',
-			'node_modules/intl/locale-data/jsonp/it.js',
-			'node_modules/intl/locale-data/jsonp/nl.js'
-		],
-		alias: 'intl/locale-data'
-	}
-};
-
-const rollupConfig = {
-	plugins: [
-		nodeResolve({
-			jsnext: true,
-			main: true,
-			browser: true
-		}),
-		commonjs({
-			include: 'node_modules/**'
-		}),
-		babel({
-			include: ['./*.js', 'source/**', 'node_modules/mastic-detect/**'],
-			presets: ['es2015-rollup']
-		}),
-		uglify()
-	]
-};
-
-rollup(Object.assign({
-	entry: 'polyfills.js'
-}, rollupConfig)).then(bundle => {
+rollup(getRollupConfigForEntry('polyfills.js'))
+.then(bundle => {
 	bundle.write({
 		format: 'cjs',
 		dest: 'es5-polyfills.js'
@@ -48,43 +20,56 @@ rollup(Object.assign({
 	console.error(error); //eslint-disable-line
 });
 
-glob('source/*.js', (er, files) => {
-	files.forEach(file => {
-		if (path.basename(file).endsWith('-multi.js')) {
-			const basename = path.basename(file).replace('-multi.js', '');
-			const config = multiConfig[basename];
-			config.files.forEach(file => {
-				rollup(Object.assign({
-					entry: file,
-					plugins: [alias({
-						[config.alias]: file
-					})],
-				}, rollupConfig)).then(bundle => {
-					const filename = path.basename(file);
-					console.log(`${filename} bundle generated`); //eslint-disable-line
-					bundle.write({
-						useStrict: false,
-						format: 'cjs',
-						dest: `bundles/${basename}-${filename}`
-					});
-				}).catch(error => {
-					console.error(error); //eslint-disable-line
-				});
+const writeBundleExports = bundles => {
+	const bundlesExports = bundles.reduce((file, bundle) => {
+		return file += `\nmodule.exports.${camelcase(bundle.name)} = ${JSON.stringify(bundle)};`;
+	}, '');
+	return writeFile('bundles/index.js', bundlesExports).then(() => {
+		console.log(`${chalk.dim(`🛄  Exports file with`)} ${bundles.length} bundles ${chalk.dim('generated')}\n`); //eslint-disable-line
+	});
+};
+
+const writeRollupBundleWithName = bundleName => bundle => {
+	const bundlePath = `bundles/${bundleName}`;
+	return bundle.write({
+		useStrict: false,
+		format: 'cjs',
+		dest: bundlePath
+	}).then(() => {
+		console.log(`📦  ${bundleName} ${chalk.dim('bundle generated')} \n`); //eslint-disable-line
+		return {
+			name: path.parse(bundleName).name,
+			path: `mastic-polyfills/${bundlePath}`
+		};
+	});
+};
+
+const getRollupBundle = (config, bundleName) => {
+	return rollup(config).then(writeRollupBundleWithName(bundleName));
+};
+
+const getBundles = ({ files, alias, bundlePrefix }) => {
+	return Promise.all(files.map(file => {
+		const basename = path.basename(file);
+		if (basename.endsWith('-multi.js')) {
+			const cleanBasename = basename.replace('-multi.js', '');
+			return readFile(`source/${cleanBasename}-config.json`, 'utf8').then(filecontent => {
+				const config = JSON.parse(filecontent);
+				return getBundles({ files: config.files, alias: config.alias, bundlePrefix: cleanBasename });
 			});
 		} else {
-			rollup(Object.assign({
-				entry: file
-			}, rollupConfig)).then(bundle => {
-				const filename = path.basename(file);
-				console.log(`${filename} bundle generated`); //eslint-disable-line
-				bundle.write({
-					useStrict: false,
-					format: 'cjs',
-					dest: `bundles/${filename}`
-				});
-			}).catch(error => {
-				console.error(error); //eslint-disable-line
-			});
+			const rollupConfig = getRollupConfigForEntry(file, alias);
+			const bundleName = `${typeof bundlePrefix !== 'undefined' ? `${bundlePrefix}-` : ''}${basename}`;
+			return getRollupBundle(rollupConfig, bundleName);
 		}
-	});
+	}));
+};
+
+glob('source/*.js')
+.then(files => ({ files }))
+.then(getBundles)
+.then(bundles => flatten(bundles))
+.then(writeBundleExports)
+.catch(error => {
+	console.error(error); //eslint-disable-line
 });

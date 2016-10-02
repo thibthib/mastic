@@ -1,0 +1,9 @@
+{
+	"alias": "intl/locale-data",
+	"files": [
+		"node_modules/intl/locale-data/jsonp/es.js",
+		"node_modules/intl/locale-data/jsonp/fr.js",
+		"node_modules/intl/locale-data/jsonp/it.js",
+		"node_modules/intl/locale-data/jsonp/nl.js"
+	]
+}
