@@ -25,7 +25,7 @@ const writeBundleExports = bundles => {
 		return file += `\nmodule.exports.${camelcase(bundle.name)} = ${JSON.stringify(bundle)};`;
 	}, '');
 	return writeFile('bundles/index.js', bundlesExports).then(() => {
-		console.log(`${chalk.dim(`🛄  Exports file with`)} ${bundles.length} bundles ${chalk.dim('generated')}\n`); //eslint-disable-line
+		console.log(`\n${chalk.dim(`🛄  Exports file with`)} ${bundles.length} bundles ${chalk.dim('generated')}`); //eslint-disable-line
 	});
 };
 
@@ -36,7 +36,7 @@ const writeRollupBundleWithName = bundleName => bundle => {
 		format: 'cjs',
 		dest: bundlePath
 	}).then(() => {
-		console.log(`📦  ${bundleName} ${chalk.dim('bundle generated')} \n`); //eslint-disable-line
+		console.log(`📦  ${bundleName} ${chalk.dim('bundle generated')}`); //eslint-disable-line
 		return {
 			name: path.parse(bundleName).name,
 			path: `mastic-polyfills/${bundlePath}`
