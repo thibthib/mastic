@@ -13,7 +13,6 @@
   "author": "Thibaut Dutartre <t.dutartre@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-preset-es2015": "^6.14.0",
     "express": "^4.14.0",
     "mastic-polyfills": "1.1.0"
   },
