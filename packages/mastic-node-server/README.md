@@ -15,16 +15,16 @@ npm i mastic-node-server --save
 and then run it !
 
 ```js
-import mastic from 'mastic-node-server';
-import Polyfill, { Promise } from 'mastic-polyfills';
+const mastic = require('mastic-node-server');
+const { promise } = require('mastic-polyfills/bundles');
 
-const isFeatureSupported = typeof feature !== 'undefined';
-const bundleIdentifier = 'feature-polyfill';
-const bundlePath = './path/to/my-bundle.js';
-const myPolyfill = new Polyfill(isFeatureSupported, bundleIdentifier, bundlePath);
+const myPolyfillBundle = {
+	name: 'feature-polyfill',
+	bundlePath: './path/to/my-bundle.js'
+}
 
 const server = mastic({
-	polyfills: [Promise, myPolyfill]
+	polyfills: [promise, myPolyfillBundle]
 });
 
 server.listen();

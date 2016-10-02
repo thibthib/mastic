@@ -1,23 +1,23 @@
 const express = require('express');
 const fs = require('fs');
-const defaultPolyfills = require('mastic-polyfills');
 
-export default ({ polyfills = defaultPolyfills }) => {
+module.exports = ({ polyfills = [] }) => {
 	const polyfillsMap = polyfills.reduce((map, polyfill) => {
-		map.set(polyfill.identifier, polyfill);
+		map.set(polyfill.name, polyfill);
+		return map;
 	}, new Map());
 	
-	const getPolyfill = (polyfillIdentifier) => {
+	const getPolyfill = (polyfillName) => {
 		return new Promise((resolve, reject) => {
-			const polyfill = polyfillsMap.get(polyfillIdentifier);
+			const polyfill = polyfillsMap.get(polyfillName);
 			if (typeof polyfill.bundle === 'undefined') {
-				const bundlePath = require.resolve(polyfill.bundlePath);
+				const bundlePath = require.resolve(polyfill.path);
 				fs.readFile(bundlePath, 'utf8', (error, contents) => {
 					if (error) {
 						reject(error);
 					} else {
 						polyfill.bundle = contents;
-						polyfillsMap.set(polyfillIdentifier, polyfill);
+						polyfillsMap.set(polyfillName, polyfill);
 						resolve(contents);
 					}
 				});
