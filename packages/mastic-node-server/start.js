@@ -1,8 +1,8 @@
 const mastic = require('./server.js');
-const { promise } = require('mastic-polyfills/bundles');
+const bundles = require('mastic-polyfills/bundles');
 
 const server = mastic({
-	polyfills: [promise]
+	polyfills: Object.keys(bundles).map(bundleName => bundles[bundleName])
 });
 
 server.listen();
